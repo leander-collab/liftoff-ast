@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LIFTOFF! â FÃ¼hrungserfolg von Tag 1 an sichern</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:    #6cb33e;
+      --green-l:  #82d44a;
+      --dark:     #0f2330;
+      --dark2:    #1d3c4b;
+      --mid:      #2a5068;
+      --text:     #1a1a2e;
+      --muted:    #64748b;
+      --bg:       #f8fafb;
+    }
+
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', sans-serif;
+      background: #fff;
+      color: var(--text);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* âââ NAV âââââââââââââââââââââââââââââââââââââââââ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 18px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(15,35,48,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(108,179,62,0.15);
+    }
+
+    .nav-logo {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--green);
+      letter-spacing: -1px;
+    }
+
+    .nav-cta {
+      background: var(--green);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 9px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: var(--green-l); transform: translateY(-1px); }
+
+    /* âââ HERO ââââââââââââââââââââââââââââââââââââââââ */
+    .hero {
+      min-height: 100vh;
+      background: var(--dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    /* subtle background shapes */
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(108,179,62,0.12) 0%, transparent 70%);
+      top: -200px; right: -150px;
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(108,179,62,0.07) 0%, transparent 70%);
+      bottom: -100px; left: -100px;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green);
+      border: 1px solid rgba(108,179,62,0.4);
+      padding: 6px 16px;
+      border-radius: 30px;
+      margin-bottom: 32px;
+    }
+
+    .hero-title {
+      font-size: clamp(56px, 10vw, 96px);
+      font-weight: 900;
+      color: var(--green);
+      letter-spacing: -3px;
+      line-height: 0.9;
+      margin-bottom: 24px;
+    }
+
+    .hero-sub {
+      font-size: clamp(22px, 3.5vw, 32px);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .hero-text {
+      font-size: 17px;
+      color: rgba(255,255,255,0.65);
+      max-width: 600px;
+      margin: 0 auto 48px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 16px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 24px rgba(108,179,62,0.35);
+    }
+    .btn-primary:hover {
+      background: var(--green-l);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(108,179,62,0.45);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: rgba(255,255,255,0.7);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 16px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover {
+      border-color: rgba(255,255,255,0.5);
+      color: #fff;
+    }
+
+    /* âââ STATS âââââââââââââââââââââââââââââââââââââââ */
+    .stats-bar {
+      background: var(--dark);
+      padding: 0 24px 64px;
+    }
+
+    .stats-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      transform: translateY(-40px);
+    }
+
+    .stat {
+      background: var(--dark2);
+      border: 1px solid rgba(108,179,62,0.18);
+      border-radius: 16px;
+      padding: 32px 20px 28px;
+      text-align: center;
+      cursor: default;
+      transition: transform 0.25s cubic-bezier(.22,.68,0,1.2),
+                  box-shadow 0.25s ease,
+                  border-color 0.25s ease;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    }
+    .stat:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.35), 0 0 0 1px rgba(108,179,62,0.35);
+      border-color: rgba(108,179,62,0.45);
+    }
+
+    .stat-num {
+      font-size: 44px;
+      font-weight: 900;
+      color: var(--green);
+      letter-spacing: -2px;
+      line-height: 1;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.5;
+    }
+
+    /* âââ SECTION âââââââââââââââââââââââââââââââââââââ */
+    section {
+      padding: 100px 24px;
+    }
+
+    .section-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 12px;
+    }
+
+    .section-h {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800;
+      color: var(--dark);
+      line-height: 1.15;
+      margin-bottom: 14px;
+      letter-spacing: -0.5px;
+    }
+
+    .section-lead {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 56px;
+    }
+
+    /* âââ BENEFIT CARDS âââââââââââââââââââââââââââââââ */
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .benefit-card {
+      background: var(--bg);
+      border: 1px solid #e8eef2;
+      border-radius: 14px;
+      padding: 28px 26px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .benefit-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+    }
+
+    .benefit-icon {
+      width: 44px; height: 44px;
+      background: rgba(108,179,62,0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .benefit-icon svg {
+      width: 22px; height: 22px;
+      stroke: var(--green);
+    }
+
+    .benefit-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+
+    .benefit-card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* âââ BAUSTEINE âââââââââââââââââââââââââââââââââââ */
+    .modules-section {
+      background: var(--dark);
+    }
+
+    .modules-section .section-h { color: #fff; }
+    .modules-section .eyebrow   { color: var(--green); }
+    .modules-section .section-lead { color: rgba(255,255,255,0.55); }
+
+    .module-group {
+      margin-bottom: 44px;
+    }
+
+    /* group header row */
+    .module-group-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .module-group-header hr {
+      flex: 1;
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .module-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .module-tag.big3 {
+      background: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.85);
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .module-tag.good2 {
+      background: var(--green);
+      color: #fff;
+    }
+
+    .module-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .module-cards.two-col {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .module-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 24px 22px 22px;
+      transition: background 0.22s, border-color 0.22s, transform 0.22s;
+      cursor: default;
+    }
+
+    .module-card:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(108,179,62,0.4);
+      transform: translateY(-3px);
+    }
+
+    .module-num {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--green);
+      letter-spacing: -1px;
+      line-height: 1;
+      margin-bottom: 14px;
+      display: block;
+      opacity: 0.9;
+    }
+
+    .module-card h4 {
+      font-size: 15px;
+       font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .module-card p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.6;
+    }
+
+    /* âââ QUOTES ââââââââââââââââââââââââââââââââââââââ */
+    .quote-section {
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quote-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 60%, rgba(108,179,62,0.08), transparent 60%),
+                  radial-gradient(ellipse at 80% 20%, rgba(108,179,62,0.05), transparent 50%);
+      pointer-events: none;
+    }
+
+    .quote-section .section-inner { position: relative; }
+
+    .quote-section .eyebrow { color: rgba(255,255,255,0.5); }
+    .quote-section .section-h { color: #fff; margin-bottom: 48px; }
+
+    .quotes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .quote-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(108,179,62,0.18);
+      border-radius: 18px;
+      padding: 36px 32px 28px;
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    }
+
+    .quote-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(108,179,62,0.4);
+      background: rgba(255,255,255,0.07);
+    }
+
+    .quote-mark {
+      font-size: 52px;
+      color: var(--green);
+      line-height: 0.7;
+      margin-bottom: 16px;
+      display: block;
+      font-family: Georgia, serif;
+    }
+
+    .quote-text {
+      font-size: 15px;
+      font-style: italic;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+
+    .quote-author {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--green);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .quote-role {
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+      margin-top: 2px;
+    }
+
+    /* âââ CTA SECTION âââââââââââââââââââââââââââââââââ */
+    .cta-section {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--mid) 100%);
+      text-align: center;
+      padding: 100px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 60% 50%, rgba(108,179,62,0.12), transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-section .section-h { color: #fff; position: relative; }
+    .cta-section .section-lead { position: relative; color: rgba(255,255,255,0.6); margin: 0 auto 40px; }
+
+    .cta-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    /* âââ FOOTER ââââââââââââââââââââââââââââââââââââââ */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 28px 24px;
+      text-align: center;
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+    }
+
+    footer a {
+      color: var(--green);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    footer a:hover { opacity: 0.75; }
+
+    /* âââ RESPONSIVE ââââââââââââââââââââââââââââââââââ */
+
+    /* Tablet / large phone */
+    @media (max-width: 768px) {
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .benefit-grid { grid-template-columns: 1fr; }
+      .module-cards { grid-template-columns: 1fr !important; }
+      .quotes-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* Phone */
+    @media (max-width: 600px) {
+      /* Nav */
+      nav { padding: 14px 18px; }
+      .nav-logo { font-size: 19px; }
+      .nav-cta { font-size: 12px; padding: 8px 14px; letter-spacing: 0; }
+      .nav-cta-long { display: none; }
+      .nav-cta-short { display: inline; }
+
+      /* Hero */
+      .hero { padding: 96px 20px 56px; min-height: unset; }
+      .hero-badge { font-size: 10px; letter-spacing: 0.08em; padding: 5px 12px; margin-bottom: 24px; }
+      .hero-title { letter-spacing: -2px; margin-bottom: 16px; }
+      .hero-sub { font-size: 21px; }
+      .hero-text { font-size: 15px; margin-bottom: 32px; }
+      .hero-actions { flex-direction: column; align-items: stretch; gap: 10px; }
+      .btn-primary, .btn-ghost { justify-content: center; padding: 15px 20px; font-size: 14px; }
+
+      /* Stats */
+      .stats-bar { padding: 0 16px 36px; }
+      .stats-inner { transform: translateY(-20px); gap: 10px; }
+      .stat { padding: 24px 14px 20px; border-radius: 12px; }
+      .stat-num { font-size: 36px; }
+      .stat-label { font-size: 12px; }
+
+      /* Sections */
+      section { padding: 64px 20px; }
+      .section-h { font-size: clamp(24px, 7vw, 32px); }
+      .section-lead { font-size: 15px; margin-bottom: 36px; }
+
+      /* Benefit cards */
+      .benefit-card { padding: 22px 20px; }
+
+      /* Module items */
+      .module-item { padding: 16px; }
+
+      /* Quotes */
+      .quote-section { padding: 64px 20px; }
+      .quotes-grid { grid-template-columns: 1fr; gap: 16px; }
+      .quote-card { padding: 24px 20px 20px; }
+      .quote-text { font-size: 15px; }
+      .quote-mark { font-size: 44px; margin-bottom: 12px; }
+
+      /* CTA */
+      .cta-section { padding: 72px 20px; }
+      .cta-actions { flex-direction: column; align-items: stretch; }
+      .cta-actions .btn-primary { justify-content: center; font-size: 14px; }
+
+      /* Footer */
+      footer { font-size: 12px; padding: 20px 16px; line-height: 1.8; }
+    }
+
+    /* Very small phones */
+    @media (max-width: 380px) {
+      .hero-badge { display: none; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .stat-num { font-size: 30px; }
+    }
+
+    /* âââ SCROLL FADE-IN ââââââââââââââââââââââââââââââ */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-logo">LIFTOFF!</span>
+    <a class="nav-cta" href="20260416_Flyer.pdf" download>
+      <span class="nav-cta-long">PDF herunterladen</span>
+      <span class="nav-cta-short" style="display:none;">PDF â</span>
+      <span class="nav-cta-long"> â</span>
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <span class="hero-badge">Entwicklungsprogramm fÃ¼r neue FÃ¼hrungskrÃ¤fte</span>
+      <div class="hero-title">LIFTOFF!</div>
+      <div class="hero-sub">FÃ¼hrungserfolg von Tag 1 an sichern.</div>
+      <p class="hero-text">
+        Der Sprung in die erste FÃ¼hrungsposition ist einer der grÃ¶Ãten Meilensteine einer Karriere â und oft die steilste Lernkurve. LIFTOFF! navigiert neue FÃ¼hrungskrÃ¤fte sicher durch die ersten 100 Tage und darÃ¼ber hinaus.
+      </p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#programm">Programm entdecken â</a>
+        <a class="btn-ghost" href="20260416_Flyer.pdf" download>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Flyer als PDF
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat">
+        <span class="stat-num">3</span>
+        <span class="stat-label">Module<br>Ã  2 Tage</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">12</span>
+        <span class="stat-label">max. Teilnehmende<br>pro Gruppe</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">2</span>
+        <span class="stat-label">Einzelcoachings<br>(optional)</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">100+</span>
+        <span class="stat-label">Tage<br>Wirkung</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEISTUNGEN -->
+  <section id="programm">
+    <div class="section-inner">
+      <p class="eyebrow fade-in">Was das Programm leistet</p>
+      <h2 class="section-h fade-in">Vom Experten zur<br>FÃ¼hrungspersÃ¶nlichkeit.</h2>
+      <p class="section-lead fade-in">Drei Hebel, die den Unterschied machen.</p>
+
+      <div class="benefit-grid">
+        <div class="benefit-card fade-in">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>
+            </svg>
+          </div>
+          <h3>Performance sichern</h3>
+          <p>VerkÃ¼rzung der Einarbeitungsphase und schnellere Wirksamkeit in der neuen FÃ¼hrungsrolle.</p>
+        </div>
+        <div class="benefit-card fade-in">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <h3>Risiken minimieren</h3>
+          <p>PrÃ¤vention durch erprobte Frameworks wie GRPI, GROW und das Glasl-Eskalationsmodell.</p>
+        </div>
+        <div class="benefit-card fade-in">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 8v4l3 3"/>
+            </svg>
+          </div>
+          <h3>ZukunftsfÃ¤hige Kultur</h3>
+          <p>Modernes FÃ¸hrungsverstÃ¤ndnis auf Basis psychologischer Sicherheit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BAUSTEINE -->
+  <section class="modules-section">
+    <div class="section-inner">
+      <p class="eyebrow fade-in">Programm-Bausteine</p>
+      <h2 class="section-h fade-in" style="color:#fff;">Modular. Praxisnah.<br>Sofort wirksam.</h2>
+      <p class="section-lead fade-in">Ein solides Fundament â ergÃ¤nzt durch gezielte Vertiefungen.</p>
+
+      <!-- BIG 3 -->
+      <div class="module-group fade-in">
+        <div class="module-group-header">
+          <span class="module-tag big3">BIG 3 â Dein Fundament</span>
+          <hr />
+        </div>
+        <div class="module-cards">
+          <div class="module-card">
+            <span class="module-num">01</span>
+            <h4>FÃ¼hrung &amp; RollenidentitÃ¤t</h4>
+            <p>Finde deine FÃ¼hrungsidentitÃ¤t und setze die richtigen PrioritÃ¤ten.</p>
+          </div>
+          <div class="module-card">
+            <span class="module-num">02</span>
+            <h4>Wirksam kommunizieren</h4>
+            <p>Nutze Sprache als Steuerungsinstrument fÃ¼r Klarheit und Kooperation.</p>
+          </div>
+          <div class="module-card">
+            <span class="module-num">03</span>
+            <h4>Team-Dynamik meistern</h4>
+            <p>Forme dein Team gezielt zur High-Performance-Einheit.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- GOOD 2 -->
+      <div class="module-group fade-in">
+        <div class="module-group-header">
+          <span class="module-tag good2">GOOD 2 â Optionale Deep Dives</span>
+          <hr />
+        </div>
+        <div class="module-cards two-col">
+          <div class="module-card">
+            <span class="module-num">04</span>
+            <h4>Konfliktmanagement</h4>
+            <p>Konflikte frÃ¼h erkennen, deeskalieren und als Wachstumsmotor nutzen.</p>
+          </div>
+          <div class="module-card">
+            <span class="module-num">05</span>
+            <h4>Eigenverantwortung stÃ¤rken</h4>
+            <p>Delegation und Empowerment: Mehr Freiraum durch klare Verantwortungsstrukturen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTES -->
+  <section class="quote-section">
+    <div class="section-inner">
+      <p class="eyebrow fade-in">Stimmen aus dem Programm</p>
+      <h2 class="section-h fade-in" style="max-width:620px;">Was Teilnehmende sagen</h2>
+      <div class="quotes-grid">
+
+        <div class="quote-card fade-in">
+          <span class="quote-mark">"</span>
+          <p class="quote-text">Ganz ehrlich: Ich dachte am Anfang, ich krieg das mit der FÃ¸hrung schon irgendwie nebenher gewuppt. LIFTOFF! hat mir ordentlich den Kopf gewaschen. Jetzt weiÃ ich endlich, wo ich mit dem Team hinwill, und eier nicht mehr rum.</p>
+          <span class="quote-author">Teamleiterin</span>
+          <p class="quote-role">Produktion, mittelstÃ¤ndisches Unternehmen</p>
+        </div>
+
+        <div class="quote-card fade-in">
+          <span class="quote-mark">"</span>
+          <p class="quote-text">Das Modul zur Kommunikation hat mir die Augen geÃ¶ffnet. Ich hab frÃ¼her einfach Ansagen gemacht â jetzt fÃ¼hre ich wirklich GesprÃ¤che. Mein Team merkt den Unterschied, und ich auch. Die Stimmung ist komplett anders geworden.</p>
+          <span class="quote-author">Abteilungsleiter</span>
+          <p class="quote-role">IT-Dienstleister, 12 Mitarbeitende</p>
+        </div>
+
+        <div class="quote-card fade-in">
+          <span class="quote-mark">"</span>
+          <p class="quote-text">Ich war skeptisch, ob mir ein Programm wirklich weiterhelfen kann. Aber LIFTOFF! war das Konkreteste, was ich je zu FÃ¼hrung gemacht habe. Keine leere Theorie â ich hab am nÃ¤chsten Montag direkt umgesetzt, was wir am Freitag besprochen hatten.</p>
+          <span class="quote-author">SchichtfÃ¸hrerin</span>
+          <p class="quote-role">Logistik, 8 Mitarbeitende</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="section-inner">
+      <h2 class="section-h">Bereit zum Abheben?</h2>
+      <p class="section-lead">Alle Details zum Programm â kompakt auf einer Seite.</p>
+      <div class="cta-actions">
+        <a class="btn-primary" href="20260416_Flyer.pdf" download>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Programm-Details als PDF herunterladen
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="https://www.ast-development.de" target="_blank">www.ast-development.de</a>
+    &nbsp;Â·&nbsp;
+    AST AG â Anne Schwarz Training | development for success
+  </footer>
+
+  <script>
+    // Scroll-triggered fade-in
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } }),
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
